@@ -1,0 +1,16 @@
+mediapipe
+opencv-python-headless
+numpy
+fastapi
+pydantic
+uvicorn
+python-multipart
+# rPPG Dependencies
+# pyVHR (We might need to install from git if pip version is old, but let's try pip first)
+pyVHR
+torch
+torchvision
+scipy
+pandas
+scikit-learn
+numba
