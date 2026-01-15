@@ -74,3 +74,53 @@ async def analyze_face(
 
     except Exception as e:
         return {"status": "error", "message": str(e), "data": None}
+
+
+# ============ RAG API ============
+from pydantic import BaseModel
+from typing import List, Dict, Optional
+from backend.core.rag_service import generate_weekly_insight
+
+
+class WeeklyInsightRequest(BaseModel):
+    mood_data: List[float]  # 7-day mood scores
+    baseline: Dict  # User baseline data
+    challenge_type: str = "general"  # sleep, energy, focus, stress, general
+
+
+@app.post("/rag/weekly-insight")
+async def get_weekly_insight(request: WeeklyInsightRequest):
+    """
+    Generate AI-powered weekly insight using RAG.
+    
+    Uses OpenAI embeddings to retrieve relevant health research,
+    then generates personalized insights with GPT-4.
+    """
+    try:
+        result = generate_weekly_insight(
+            mood_data=request.mood_data,
+            baseline=request.baseline,
+            challenge_type=request.challenge_type
+        )
+        
+        return {
+            "status": "success",
+            "data": result
+        }
+    except Exception as e:
+        return {
+            "status": "error", 
+            "message": str(e),
+            "data": None
+        }
+
+
+@app.get("/rag/health")
+async def rag_health_check():
+    """Check if RAG service is properly configured"""
+    import os
+    has_key = bool(os.environ.get("OPENAI_API_KEY"))
+    return {
+        "status": "ok" if has_key else "missing_key",
+        "openai_configured": has_key
+    }
