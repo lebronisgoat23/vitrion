@@ -206,7 +206,7 @@ vitrion/
 
 ## 👤 Author
 
-**[Your Name]**  
+**[Antonio Tseng]**  
 Building the future of personal energy management.
 
 ---
