@@ -18,6 +18,20 @@
 
 ---
 
+## 📱 Demo
+
+<p align="center">
+  <img src="docs/screenshots/dashboard.png" width="250" alt="Dashboard"/>
+  <img src="docs/screenshots/scan.png" width="250" alt="Face Scan"/>
+  <img src="docs/screenshots/result.png" width="250" alt="Results"/>
+</p>
+
+<p align="center">
+  <sub>Dashboard 首頁 · 臉部掃描 · 分析結果</sub>
+</p>
+
+---
+
 ## 🎯 問題與機會
 
 在 ChatGPT Health 和 Claude for Healthcare 的時代，**通用健康問答已被商品化**。
